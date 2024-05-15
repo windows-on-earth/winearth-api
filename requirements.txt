@@ -1,0 +1,4 @@
+Django
+psycopg
+psycopg-binary
+djangorestframework
