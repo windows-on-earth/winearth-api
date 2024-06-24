@@ -1,0 +1,7 @@
+.git
+.github
+.idea
+.pytest_cache
+htmlcov
+db.sqlite3
+kc_*
