@@ -2,3 +2,4 @@ Django
 psycopg
 psycopg-binary
 djangorestframework
+pyaml
