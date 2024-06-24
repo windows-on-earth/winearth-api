@@ -1,0 +1,340 @@
+- fields:
+    end_latitude: '-26.03507'
+    end_longitude: '109.1274456'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '599'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-32405-33003
+    seconds: '1794'
+    shutter_speed: '[0, 1]'
+    start_latitude: '51.26988'
+    start_longitude: '15.19103561'
+    time_stamp: '1313788360'
+  model: api.movies
+  pk: 1
+- fields:
+    end_latitude: '-39.63146'
+    end_longitude: '73.21179564'
+    f_number: '[4, 1]'
+    iis_mission: ISS02
+    images: '206'
+    iso: '6400'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-40372-40577
+    seconds: '820'
+    shutter_speed: '[-1, 1]'
+    start_latitude: '-0.5994400000000001'
+    start_longitude: '36.47432278'
+    time_stamp: '1315161744'
+  model: api.movies
+  pk: 2
+- fields:
+    end_latitude: '26.76812'
+    end_longitude: '-3.858603643'
+    f_number: '[56, 10]'
+    iis_mission: ISS02
+    images: '119'
+    iso: '200'
+    lens: ''
+    model: NIKON D2Xs
+    movie: ISS020-E-40201-40319
+    seconds: '1770'
+    shutter_speed: ''
+    start_latitude: '-50.94521'
+    start_longitude: '-95.69396655'
+    time_stamp: '1253027415'
+  model: api.movies
+  pk: 3
+- fields:
+    end_latitude: '-22.31155'
+    end_longitude: '-43.3512097'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '588'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-27850-28437
+    seconds: '1761'
+    shutter_speed: '[0, 1]'
+    start_latitude: '51.61923'
+    start_longitude: '-138.3020119'
+    time_stamp: '1313738517'
+  model: api.movies
+  pk: 4
+- fields:
+    end_latitude: '51.51843'
+    end_longitude: '52.86447496'
+    f_number: '[11, 1]'
+    iis_mission: ISS02
+    images: '237'
+    iso: '200'
+    lens: ''
+    model: NIKON D2Xs
+    movie: ISS028-E-38817-38916
+    seconds: '1180'
+    shutter_speed: '[8965784, 1000000]'
+    start_latitude: '6.3952'
+    start_longitude: '-19.00222466'
+    time_stamp: '1315048455'
+  model: api.movies
+  pk: 5
+- fields:
+    end_latitude: '-4.73937'
+    end_longitude: '98.73188434'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '103'
+    iso: '6400'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-26411-26513
+    seconds: '510'
+    shutter_speed: '[736966, 1000000]'
+    start_latitude: '21.11639'
+    start_longitude: '79.45613733'
+    time_stamp: '1313617685'
+  model: api.movies
+  pk: 6
+- fields:
+    end_latitude: '-22.28718'
+    end_longitude: '-90.25427753'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '317'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-28454-28770
+    seconds: '948'
+    shutter_speed: '[-678072, 1000000]'
+    start_latitude: '25.37263'
+    start_longitude: '-126.9749976'
+    time_stamp: '1313750396'
+  model: api.movies
+  pk: 7
+- fields:
+    end_latitude: '-11.52667'
+    end_longitude: '73.56248659'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '388'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-27594-29238
+    seconds: '1548'
+    shutter_speed: '[0, 1]'
+    start_latitude: '51.64289'
+    start_longitude: '-13.14439046'
+    time_stamp: '1313793844'
+  model: api.movies
+  pk: 8
+- fields:
+    end_latitude: '-51.76453'
+    end_longitude: '67.4020409'
+    f_number: '[4, 1]'
+    iis_mission: ISS02
+    images: '120'
+    iso: '6400'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-40250-40369
+    seconds: '476'
+    shutter_speed: '[-1584963, 1000000]'
+    start_latitude: '-43.3419'
+    start_longitude: '24.70777783'
+    time_stamp: '1315090755'
+  model: api.movies
+  pk: 9
+- fields:
+    end_latitude: '-3.03257'
+    end_longitude: '74.08040876'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '297'
+    iso: '6400'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-25988-26284
+    seconds: '1480'
+    shutter_speed: '[736966, 1000000]'
+    start_latitude: '51.71591'
+    start_longitude: '-16.38259037'
+    time_stamp: '1313622215'
+  model: api.movies
+  pk: 10
+- fields:
+    end_latitude: '-11.74646'
+    end_longitude: '120.6077211'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '182'
+    iso: '6400'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-28916-29097
+    seconds: '905'
+    shutter_speed: '[-1, 1]'
+    start_latitude: '33.16036'
+    start_longitude: '84.0733264'
+    time_stamp: '1313783425'
+  model: api.movies
+  pk: 11
+- fields:
+    end_latitude: '27.34896'
+    end_longitude: '-27.21984746'
+    f_number: '[76, 10]'
+    iis_mission: ISS02
+    images: '141'
+    iso: '200'
+    lens: ''
+    model: NIKON D2Xs
+    movie: ISS028-E-35306-35446
+    seconds: '420'
+    shutter_speed: '[8965784, 1000000]'
+    start_latitude: '6.57658'
+    start_longitude: '-44.25541397'
+    time_stamp: '1314799513'
+  model: api.movies
+  pk: 12
+- fields:
+    end_latitude: '1.68384'
+    end_longitude: '37.21810855'
+    f_number: '[45, 10]'
+    iis_mission: ISS02
+    images: '101'
+    iso: '200'
+    lens: ''
+    model: NIKON D2Xs
+    movie: ISS023-E-29130-29230
+    seconds: '1500'
+    shutter_speed: ''
+    start_latitude: '-51.37673'
+    start_longitude: '-57.73193734'
+    time_stamp: '1272467085'
+  model: api.movies
+  pk: 13
+- fields:
+    end_latitude: '3.56196'
+    end_longitude: '56.11126987'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '117'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-31493-31609
+    seconds: '1160'
+    shutter_speed: '[0, 1]'
+    start_latitude: '50.75812'
+    start_longitude: '-10.65524874'
+    time_stamp: '1313965466'
+  model: api.movies
+  pk: 14
+- fields:
+    end_latitude: '11.80747'
+    end_longitude: '112.0601253'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '198'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-29406-29603
+    seconds: '985'
+    shutter_speed: '[0, 1]'
+    start_latitude: '50.56297'
+    start_longitude: '52.58052876'
+    time_stamp: '1313865883'
+  model: api.movies
+  pk: 15
+- fields:
+    end_latitude: '34.62887'
+    end_longitude: '37.43620078'
+    f_number: '[10, 1]'
+    iis_mission: ISS02
+    images: '104'
+    iso: '200'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-31153-31256
+    seconds: '1030'
+    shutter_speed: '[9321928, 1000000]'
+    start_latitude: '-16.29572'
+    start_longitude: '-4.425190146'
+    time_stamp: '1313935950'
+  model: api.movies
+  pk: 16
+- fields:
+    end_latitude: '-39.02802'
+    end_longitude: '62.53247588'
+    f_number: '[56, 10]'
+    iis_mission: ISS02
+    images: '119'
+    iso: '200'
+    lens: ''
+    model: NIKON D2Xs
+    movie: ISS020-E-30460-30578
+    seconds: '1770'
+    shutter_speed: ''
+    start_latitude: '44.41784'
+    start_longitude: '-20.06431561'
+    time_stamp: '1250254515'
+  model: api.movies
+  pk: 17
+- fields:
+    end_latitude: '-6.78198'
+    end_longitude: '148.8030152'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '378'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-30771-31148
+    seconds: '1131'
+    shutter_speed: '[0, 1]'
+    start_latitude: '45.51995'
+    start_longitude: '94.95168625'
+    time_stamp: '1313860567'
+  model: api.movies
+  pk: 18
+- fields:
+    end_latitude: '7.39174'
+    end_longitude: '100.2562371'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '199'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-29605-29803
+    seconds: '990'
+    shutter_speed: '[0, 1]'
+    start_latitude: '49.07682'
+    start_longitude: '45.10050395'
+    time_stamp: '1313954495'
+  model: api.movies
+  pk: 19
+- fields:
+    end_latitude: '-22.39607'
+    end_longitude: '-66.7171842'
+    f_number: '[28, 10]'
+    iis_mission: ISS02
+    images: '551'
+    iso: '10000'
+    lens: ''
+    model: NIKON D3S
+    movie: ISS028-E-33151-33701
+    seconds: '1650'
+    shutter_speed: '[0, 1]'
+    start_latitude: '50.39895'
+    start_longitude: '-150.7080969'
+    time_stamp: '1313744163'
+  model: api.movies
+  pk: 20
