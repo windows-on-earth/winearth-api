@@ -27,10 +27,6 @@ SECRET_KEY = 'django-insecure-2@0^_ddflfc$p0d+tno#$v6z#6aj24k_^)t9k57_#zq=_^gn&o
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000',
-)
 
 # Application definition
 
@@ -43,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'winearth.urls'
