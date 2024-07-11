@@ -1,5 +1,14 @@
 # winearth-api
 
+### Test the API on the local computer
+
+```bash
+
+    pip install -r requirements.txt
+    python manage.py runserver
+
+```
+
 
 ### Docker Deployment
 
@@ -10,7 +19,7 @@
 
 ```
 
-Check if the API is working by going to:
+### Check if the API is working by going to:
 
 * Movie List: http://127.0.0.1:8000/api/movies/
 * Movie Detail: http://127.0.0.1:8000/api/movies/ISS028-E-32405-33003/
