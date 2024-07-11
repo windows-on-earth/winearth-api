@@ -9,6 +9,7 @@ class MoviesSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             "movie",
             "url",
+            "url_rt",
             "iis_mission",
             "time_stamp",
             "seconds",
