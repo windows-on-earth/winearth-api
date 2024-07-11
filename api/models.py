@@ -30,3 +30,10 @@ class Movies(models.Model):
             self.movie,
             self.movie,
         )
+
+    @property
+    def url_rt(self):
+        return "https://windows-on-earth.sdsc.osn.xsede.org/movies/%s/%s-rt.mp4" % (
+            self.movie,
+            self.movie,
+        )
