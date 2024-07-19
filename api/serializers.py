@@ -10,6 +10,7 @@ class MoviesSerializer(serializers.HyperlinkedModelSerializer):
             "movie",
             "url",
             "url_rt",
+            "thumbnail_512",
             "iis_mission",
             "time_stamp",
             "seconds",

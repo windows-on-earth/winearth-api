@@ -37,3 +37,13 @@ class Movies(models.Model):
             self.movie,
             self.movie,
         )
+
+    @property
+    def thumbnail_512(self):
+        return (
+            "https://windows-on-earth.sdsc.osn.xsede.org/movies/%s/%s_thumbnail_512.webp"
+            % (
+                self.movie,
+                self.movie,
+            )
+        )
