@@ -25,4 +25,4 @@ USER django
 
 EXPOSE 8000
 
-CMD gunicorn -b :8000 winearth.wsgi
+CMD gunicorn -b :8000 winearth.wsgi --log-level debug

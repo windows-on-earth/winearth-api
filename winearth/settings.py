@@ -34,7 +34,7 @@ if "DEBUG" in os.environ:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "winearth-api-server"]
 
 
 # Application definition
