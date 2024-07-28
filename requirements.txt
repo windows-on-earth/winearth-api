@@ -4,3 +4,4 @@ psycopg
 psycopg-binary
 djangorestframework
 pyaml
+django-cors-headers
