@@ -36,6 +36,14 @@ else:
 
 ALLOWED_HOSTS = ["127.0.0.1", "winearth-api-server"]
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+# Can add 'http://localhost:3000' for local development with NextJS
+# Can add 'http://127.0.0.1' for local development with winearth-deploy docker compose
+CORS_ORIGIN_WHITELIST = (
+    'https://winearth.sdsc.edu',  # Server name of the production site
+)
+
 
 # Application definition
 
@@ -48,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'winearth.urls'
