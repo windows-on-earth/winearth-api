@@ -26,11 +26,14 @@ SECRET_KEY = 'django-insecure-2@0^_ddflfc$p0d+tno#$v6z#6aj24k_^)t9k57_#zq=_^gn&o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = False
+
+# Can add 'http://localhost:3000' for local development with NextJS
+# Can add 'http://127.0.0.1' for local development with winearth-deploy docker compose
 CORS_ORIGIN_WHITELIST = (
-  'http://localhost:3000',
+    'https://winearth.sdsc.edu',  # Server name of the production site
 )
+
 
 # Application definition
 
