@@ -7,6 +7,7 @@ ENV DEBUG=""
 ARG SECRET_KEY=abc123
 
 RUN mkdir /django
+RUN mkdir /django/static
 
 COPY . /django
 WORKDIR /django
@@ -15,6 +16,7 @@ RUN pip install -r requirements.txt
 
 RUN python manage.py migrate
 RUN python manage.py loaddata initial
+RUN python manage.py collectstatic --noinput
 
 RUN groupadd -g 999 django && \
     useradd -r -u 999 -g django django
