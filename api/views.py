@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from .serializers import MoviesSerializer
 from .models import Movies
+from .mypaginations import MoviesPagination
 
 
 # Create your views here.
@@ -19,8 +20,18 @@ def movie_list(request):
 
     if request.method == "GET":
         movie = Movies.objects.all()
-        serializer = MoviesSerializer(movie, many=True)
-        return Response(serializer.data)
+
+        # Instantiate movies pagination class
+        paginator = MoviesPagination()
+
+        # Paginate queryset
+        paginated_movies = paginator.paginate_queryset(movie, request)
+
+        # Serialize paginated data
+        serializer = MoviesSerializer(paginated_movies, many=True)
+
+        # Return paginated response
+        return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(["GET"])
