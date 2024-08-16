@@ -110,3 +110,7 @@ def movie_details(request, movie_name):
     if request.method == "GET":
         serializer = MoviesSerializer(movie)
         return Response(serializer.data)
+
+@api_view(["GET"])
+def version(request):
+    return Response({"version": "0.1.6"})
