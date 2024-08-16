@@ -1,12 +1,74 @@
+import re
+import time
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 
 from .serializers import MoviesSerializer
 from .models import Movies
+
+
+def validate_date(date_str):
+    date_regex = r"^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/([0-9]{4})$"
+    if not re.match(date_regex, date_str):
+        raise ValidationError(
+            f"Date {date_str} is not in the correct format MM/DD/YYYY."
+        )
+
+
+def validate_lenght(lenght_str):
+    lenght_regex = r"^\d+$"
+    if not re.match(lenght_regex, lenght_str):
+        raise ValidationError(f"Lenght {lenght_str} is not in the correct format.")
+
+
+def filter_movies_by_date(movie, start_date, end_date):
+
+    if start_date:
+        # Validate the date format
+        validate_date(start_date)
+
+        # Convert the date string to datetime object
+        start_date = datetime.strptime(start_date, "%m/%d/%Y")
+
+        # Convert the datetime object to unix timestamp
+        start_timestamp = int(time.mktime(start_date.timetuple()))
+
+        # Filter the movies by the timestamp
+        movie = movie.filter(time_stamp__gte=start_timestamp)
+
+    if end_date:
+        # Validate the date format
+        validate_date(end_date)
+
+        # Convert the date string to datetime object
+        end_date = datetime.strptime(end_date, "%m/%d/%Y")
+
+        # Convert the datetime object to unix timestamp
+        end_timestamp = int(time.mktime(end_date.timetuple()))
+
+        # Filter the movies by the timestamp
+        movie = movie.filter(time_stamp__lte=end_timestamp)
+
+    return movie
+
+
+def filter_movies_by_lenght(movie, min, max):
+    if min:
+        # Validate the lenght format
+        validate_lenght(min)
+        movie = movie.filter(seconds__gte=min)
+    if max:
+        # Validate the lenght format
+        validate_lenght(max)
+        movie = movie.filter(seconds__lte=max)
+
+    return movie
 
 
 # Create your views here.
@@ -19,6 +81,21 @@ def movie_list(request):
 
     if request.method == "GET":
         movie = Movies.objects.all()
+
+        # Filter the movies by date
+        start_date = request.query_params.get("start_date")
+        end_date = request.query_params.get("end_date")
+
+        if start_date or end_date:
+            movie = filter_movies_by_date(movie, start_date, end_date)
+
+        # Filter the movies by lenght
+        min_lenght = request.query_params.get("min_lenght")
+        max_lenght = request.query_params.get("max_lenght")
+
+        if min_lenght or max_lenght:
+            movie = filter_movies_by_lenght(movie, min_lenght, max_lenght)
+
         serializer = MoviesSerializer(movie, many=True)
         return Response(serializer.data)
 
