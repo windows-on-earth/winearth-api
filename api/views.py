@@ -21,10 +21,10 @@ def validate_date(date_str):
         )
 
 
-def validate_lenght(lenght_str):
-    lenght_regex = r"^\d+$"
-    if not re.match(lenght_regex, lenght_str):
-        raise ValidationError(f"Lenght {lenght_str} is not in the correct format.")
+def validate_length(length_str):
+    length_regex = r"^\d+$"
+    if not re.match(length_regex, length_str):
+        raise ValidationError(f"length {length_str} is not in the correct format.")
 
 
 def filter_movies_by_date(movie, start_date, end_date):
@@ -58,14 +58,14 @@ def filter_movies_by_date(movie, start_date, end_date):
     return movie
 
 
-def filter_movies_by_lenght(movie, min, max):
+def filter_movies_by_length(movie, min, max):
     if min:
-        # Validate the lenght format
-        validate_lenght(min)
+        # Validate the length format
+        validate_length(min)
         movie = movie.filter(seconds__gte=min)
     if max:
-        # Validate the lenght format
-        validate_lenght(max)
+        # Validate the length format
+        validate_length(max)
         movie = movie.filter(seconds__lte=max)
 
     return movie
@@ -89,12 +89,12 @@ def movie_list(request):
         if start_date or end_date:
             movie = filter_movies_by_date(movie, start_date, end_date)
 
-        # Filter the movies by lenght
-        min_lenght = request.query_params.get("min_lenght")
-        max_lenght = request.query_params.get("max_lenght")
+        # Filter the movies by length
+        min_length = request.query_params.get("min_length")
+        max_length = request.query_params.get("max_length")
 
-        if min_lenght or max_lenght:
-            movie = filter_movies_by_lenght(movie, min_lenght, max_lenght)
+        if min_length or max_length:
+            movie = filter_movies_by_length(movie, min_length, max_length)
 
         serializer = MoviesSerializer(movie, many=True)
         return Response(serializer.data)
