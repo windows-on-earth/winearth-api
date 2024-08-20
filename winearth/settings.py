@@ -24,17 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2@0^_ddflfc$p0d+tno#$v6z#6aj24k_^)t9k57_#zq=_^gn&o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if "DEBUG" in os.environ:
-    if os.environ["DEBUG"] == "True":
-        DEBUG = True
-    elif os.environ["DEBUG"] == "False":
-        DEBUG = False
-    else:
-        DEBUG = True
-else:
-    DEBUG = True
-
-ALLOWED_HOSTS = ["127.0.0.1", "winearth-api-server"]
+DEBUG = True
 
 CORS_ORIGIN_ALLOW_ALL = False
 
