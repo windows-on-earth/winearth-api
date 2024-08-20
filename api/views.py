@@ -82,6 +82,23 @@ def movie_list(request):
     if request.method == "GET":
         movie = Movies.objects.all()
 
+        # Filter the movies by date
+        start_date = request.query_params.get("start_date")
+        end_date = request.query_params.get("end_date")
+
+        if start_date or end_date:
+            movie = filter_movies_by_date(movie, start_date, end_date)
+
+        # Filter the movies by length
+        min_length = request.query_params.get("min_length")
+        max_length = request.query_params.get("max_length")
+
+        if min_length or max_length:
+            movie = filter_movies_by_length(movie, min_length, max_length)
+
+        serializer = MoviesSerializer(movie, many=True)
+        return Response(serializer.data)
+
 
 @api_view(["GET"])
 def movie_details(request, movie_name):
