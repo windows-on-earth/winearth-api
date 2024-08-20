@@ -113,4 +113,4 @@ def movie_details(request, movie_name):
 
 @api_view(["GET"])
 def version(request):
-    return Response({"version": "0.1.6"})
+    return Response({"version": "0.1.7"})
