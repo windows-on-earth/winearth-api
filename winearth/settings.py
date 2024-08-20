@@ -32,8 +32,6 @@ CORS_ORIGIN_ALLOW_ALL = False
 # Can add 'http://127.0.0.1' for local development with winearth-deploy docker compose
 CORS_ORIGIN_WHITELIST = (
     'https://winearth.sdsc.edu',  # Server name of the production site
-    'http://127.0.0.1',
-    'http://localhost:3003',
 )
 
 
@@ -137,6 +135,6 @@ STATIC_ROOT = "/django/static/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 5
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }

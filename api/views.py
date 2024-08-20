@@ -11,7 +11,6 @@ from rest_framework.exceptions import ValidationError
 
 from .serializers import MoviesSerializer
 from .models import Movies
-from .mypaginations import MoviesPagination
 
 
 def validate_date(date_str):
