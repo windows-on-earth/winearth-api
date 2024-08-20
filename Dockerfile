@@ -7,7 +7,7 @@ ENV DEBUG=""
 ARG SECRET_KEY=abc123
 
 RUN mkdir /django
-RUN mkdir /django/static
+RUN mkdir /django/django-static
 
 COPY . /django
 WORKDIR /django
