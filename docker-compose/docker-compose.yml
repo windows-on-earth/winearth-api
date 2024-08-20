@@ -1,0 +1,29 @@
+---
+services:
+  proxy:
+    image: nginx:1.27
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      # Mount the nginx folder with the configuration
+      - ./nginx:/etc/nginx:ro
+      # Static files for django
+      - django-static-volume:/static/django-static:ro
+      # Mount the nginx log folder
+      - ./log:/var/log/winearth:rw
+    depends_on:
+      winearth-api-server:
+        condition: service_started
+
+
+  winearth-api-server:
+    image: winearth-api:latest
+    restart: always
+    environment:
+      - DEBUG=True
+    volumes:
+      - django-static-volume:/django/static
+
+volumes:
+  django-static-volume:

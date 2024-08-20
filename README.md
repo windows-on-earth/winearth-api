@@ -15,9 +15,17 @@
 ```bash
 
     docker build . --file Dockerfile -t winearth-api
+    
+    cd docker-compose
+    
     docker compose up
 
 ```
+### Check if the API is working by going to:
+
+* Movie List: http://127.0.0.1/api/movies/
+* Movie Detail: http://127.0.0.1/api/movies/ISS028-E-32405-33003/
+
 
 ### Test on Ubuntu without Docker
 
