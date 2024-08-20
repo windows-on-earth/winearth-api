@@ -1,6 +1,5 @@
-Django
-psycopg
-psycopg-binary
-djangorestframework
-pyaml
-django-cors-headers
+Django == 5.1
+gunicorn == 22.0.0
+djangorestframework == 3.15.2
+pyaml == 24.4.0
+django-cors-headers == 4.4.0
