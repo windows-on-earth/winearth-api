@@ -1,5 +1,6 @@
 import re
 import time
+import urllib.parse # Useful for decoding URLs
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -26,6 +27,16 @@ def validate_length(length_str):
     length_regex = r"^\d+$"
     if not re.match(length_regex, length_str):
         raise ValidationError(f"length {length_str} is not in the correct format.")
+    
+def validate_limit(limit_str):
+    limit_regex = r"^\d+$"
+    if not re.match(limit_regex, limit_str):
+        raise ValidationError(f"limit {limit_str} is not in the correct format. Please use only non-negative integers.")
+    
+def validate_offset(offset_str):
+    offset_regex = r"^\d+$"
+    if not re.match(offset_regex, offset_str):
+        raise ValidationError(f"offset {offset_str} is not in the correct format. Please use only non-negative integers.")
 
 
 def filter_movies_by_date(movie, start_date, end_date):
@@ -84,8 +95,8 @@ def index(request):
 # Can filter movies by length using the url params "min_length" and "max_length"
 #   in seconds
 # Example: http://127.0.0.1/api/movies/?min_length=500&max_length=900
-# Can paginate query set to only return up to url param "limit" and offset the
-#   resulting list with url param "offset"
+# Can paginate query set to only return up to url param "limit" as int and offset the
+#   resulting list with url param "offset" as int
 # Example: http://127.0.0.1/api/movies/?limit=5&offset=5
 # An example of an advanced query:
 #   http://127.0.0.1/api/movies/?start_date=10/31/2011&end_date=12/31/2011&min_length=500&max_length=900&limit=2&offset=2
@@ -95,16 +106,20 @@ def movie_list(request):
     if request.method == "GET":
         movie = Movies.objects.all()
 
+        # Decode the URL
+        decoded_request = urllib.parse.unquote(request.build_absolute_uri())
+        print(decoded_request)
+
         # Filter the movies by date
-        start_date = request.query_params.get("start_date")
-        end_date = request.query_params.get("end_date")
+        start_date = urllib.parse.unquote(request.query_params.get("start_date"))
+        end_date = urllib.parse.unquote(request.query_params.get("end_date"))
 
         if start_date or end_date:
             movie = filter_movies_by_date(movie, start_date, end_date)
 
         # Filter the movies by length
-        min_length = request.query_params.get("min_length")
-        max_length = request.query_params.get("max_length")
+        min_length = urllib.parse.unquote(request.query_params.get("min_length"))
+        max_length = urllib.parse.unquote(request.query_params.get("max_length"))
 
         if min_length or max_length:
             movie = filter_movies_by_length(movie, min_length, max_length)
@@ -114,7 +129,14 @@ def movie_list(request):
 
         # Paginate queryset
         limit = request.query_params.get("limit")
+        if limit:
+            limit = urllib.parse.unquote(limit)
+            validate_limit(limit)
         offset = request.query_params.get("offset")
+        if offset:
+            offset = urllib.parse.unquote(offset)
+            validate_offset(offset)
+
         paginated_movies = paginator.paginate_queryset(movie, request)
 
         # Serialize paginated data
