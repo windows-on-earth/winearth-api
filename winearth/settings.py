@@ -41,8 +41,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 # Can add 'http://localhost:3000' for local development with NextJS
 # Can add 'http://127.0.0.1' for local development with winearth-deploy docker compose
 CORS_ORIGIN_WHITELIST = (
-    'https://winearth.sdsc.edu',  # Server name of the production site
-    'http://winearth-api-server'
+    'https://winearth.sdsc.edu',  # Host name of the production site
 )
 
 
