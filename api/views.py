@@ -1,6 +1,6 @@
 import re
 import time
-import urllib.parse # Useful for decoding URLs
+import urllib.parse  # Useful for decoding URLs
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -22,10 +22,12 @@ def validate_date(date_str):
             f"Date {date_str} is not in the correct format MM/DD/YYYY."
         )
 
+
 def validate_integers(str: str, validated_value: str):
     integer_regex = r"^\d+$"
     if not re.match(integer_regex, str):
         raise ValidationError(f"{validated_value} {str} is not in the correct format. Please use only non-negative integers.")
+
 
 def filter_movies_by_date(movie, start_date, end_date):
 
@@ -56,6 +58,7 @@ def filter_movies_by_date(movie, start_date, end_date):
         movie = movie.filter(time_stamp__lte=end_timestamp)
 
     return movie
+
 
 # Filters movies by length in seconds
 def filter_movies_by_length(movie, min, max):
@@ -140,6 +143,7 @@ def movie_details(request, movie_name):
     if request.method == "GET":
         serializer = MoviesSerializer(movie)
         return Response(serializer.data)
+
 
 @api_view(["GET"])
 def version(request):
