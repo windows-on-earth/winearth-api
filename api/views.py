@@ -25,7 +25,9 @@ def validate_date(date_str):
 def validate_integers(str: str, validated_value: str):
     integer_regex = r"^\d+$"
     if not re.match(integer_regex, str):
-        raise ValidationError(f"{validated_value} {str} is not in the correct format. Please use only non-negative integers.")
+        raise ValidationError(
+            f"{validated_value} {str} is not in the correct format. Please use only non-negative integers."
+        )
 
 
 def filter_movies_by_date(movie, start_date, end_date):
@@ -63,11 +65,11 @@ def filter_movies_by_date(movie, start_date, end_date):
 def filter_movies_by_length(movie, min, max):
     if min:
         # Validate the length format
-        validate_integers(min, 'length')
+        validate_integers(min, "length")
         movie = movie.filter(seconds__gte=min)
     if max:
         # Validate the length format
-        validate_integers(max, 'length')
+        validate_integers(max, "length")
         movie = movie.filter(seconds__lte=max)
 
     return movie
@@ -101,14 +103,20 @@ def movie_list(request):
         end_date = request.query_params.get("end_date")
 
         if start_date or end_date:
-            movie = filter_movies_by_date(movie, urllib.parse.unquote(start_date), urllib.parse.unquote(end_date))
+            movie = filter_movies_by_date(
+                movie, urllib.parse.unquote(start_date), urllib.parse.unquote(end_date)
+            )
 
         # Filter the movies by length
         min_length = request.query_params.get("min_length")
         max_length = request.query_params.get("max_length")
 
         if min_length or max_length:
-            movie = filter_movies_by_length(movie, urllib.parse.unquote(min_length), urllib.parse.unquote(max_length))
+            movie = filter_movies_by_length(
+                movie,
+                urllib.parse.unquote(min_length),
+                urllib.parse.unquote(max_length),
+            )
 
         # Instantiate movies pagination class
         paginator = MoviesPagination()
@@ -117,11 +125,11 @@ def movie_list(request):
         limit = request.query_params.get("limit")
         if limit:
             limit = urllib.parse.unquote(limit)
-            validate_integers(limit, 'limit')
+            validate_integers(limit, "limit")
         offset = request.query_params.get("offset")
         if offset:
             offset = urllib.parse.unquote(offset)
-            validate_integers(offset, 'offset')
+            validate_integers(offset, "offset")
 
         paginated_movies = paginator.paginate_queryset(movie, request)
 
