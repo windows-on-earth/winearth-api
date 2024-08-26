@@ -2,7 +2,6 @@ import re
 import time
 import urllib.parse  # Useful for decoding URLs
 from datetime import datetime
-from django.shortcuts import render
 from django.http import HttpResponse
 
 from rest_framework import status
