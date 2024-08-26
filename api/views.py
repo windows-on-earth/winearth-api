@@ -1,7 +1,6 @@
 import re
 import time
 from datetime import datetime
-from django.shortcuts import render
 from django.http import HttpResponse
 
 from rest_framework import status
@@ -110,6 +109,7 @@ def movie_details(request, movie_name):
     if request.method == "GET":
         serializer = MoviesSerializer(movie)
         return Response(serializer.data)
+
 
 @api_view(["GET"])
 def version(request):

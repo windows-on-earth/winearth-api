@@ -1,4 +1,5 @@
-import csv, yaml
+import csv
+import yaml
 
 
 # Convert the exported CSV file to a YAML file that can be used to populate the database
