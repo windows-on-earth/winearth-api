@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 
@@ -75,28 +76,27 @@ def index(request):
     return HttpResponse("Hello, world. You're at the api index.")
 
 
-@api_view(["GET"])
-def movie_list(request):
+class MovieListView(ListAPIView):
+    serializer_class = MoviesSerializer
 
-    if request.method == "GET":
+    def get_queryset(self):
         movie = Movies.objects.all()
 
         # Filter the movies by date
-        start_date = request.query_params.get("start_date")
-        end_date = request.query_params.get("end_date")
+        start_date = self.request.query_params.get("start_date")
+        end_date = self.request.query_params.get("end_date")
 
         if start_date or end_date:
             movie = filter_movies_by_date(movie, start_date, end_date)
 
         # Filter the movies by length
-        min_length = request.query_params.get("min_length")
-        max_length = request.query_params.get("max_length")
+        min_length = self.request.query_params.get("min_length")
+        max_length = self.request.query_params.get("max_length")
 
         if min_length or max_length:
             movie = filter_movies_by_length(movie, min_length, max_length)
 
-        serializer = MoviesSerializer(movie, many=True)
-        return Response(serializer.data)
+        return movie
 
 
 @api_view(["GET"])
