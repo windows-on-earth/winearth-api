@@ -14,8 +14,8 @@ class MoviesPagination(LimitOffsetPagination):
         pl = self.get_previous_link()
         return Response(
             {
-                "next": HOST + nl[nl.find("/api"):] if nl is not None else None,
-                "previous": HOST + pl[pl.find("/api"):] if pl is not None else None,
+                "next": HOST + nl[nl.find("/api") :] if nl is not None else None,
+                "previous": HOST + pl[pl.find("/api") :] if pl is not None else None,
                 "count": self.count,
                 "results": data,
             }
