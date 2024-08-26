@@ -2,6 +2,7 @@ import re
 import time
 from datetime import datetime
 from django.http import HttpResponse
+from django.conf import settings
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -100,6 +101,21 @@ class MovieListView(ListAPIView):
             movie = filter_movies_by_length(movie, min_length, max_length)
 
         return movie
+
+    def paginate_queryset(self, queryset):
+
+        # Get the DEBUG setting from the settings.py file
+        DEBUG = getattr(settings, "DEBUG", True)
+
+        # Set the current_scheme_host to the correct value based on the DEBUG setting
+        if DEBUG:
+            # Local development setting
+            self.request._request._current_scheme_host = "http://127.0.0.1"
+        else:
+            # Production setting
+            self.request._request._current_scheme_host = "https://winearth.sdsc.edu"
+
+        return super().paginate_queryset(queryset)
 
 
 @api_view(["GET"])

@@ -34,7 +34,7 @@ if "DEBUG" in os.environ:
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "winearth-api-server"]
+ALLOWED_HOSTS = ["127.0.0.1", "winearth-api-server", "winearth.sdsc.edu"]
 
 CORS_ORIGIN_ALLOW_ALL = False
 
@@ -145,7 +145,7 @@ STATIC_ROOT = "/django/static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
     "DEFAULT_FILTER_BACKENDS": ["rest_framework.filters.OrderingFilter"],
 }
