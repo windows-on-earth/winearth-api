@@ -78,6 +78,9 @@ def index(request):
 
 class MovieListView(ListAPIView):
     serializer_class = MoviesSerializer
+    # Enable sorting the movies by time_stamp and seconds
+    ordering_fields = ["time_stamp", "seconds"]
+    ordering = ["time_stamp"]
 
     def get_queryset(self):
         movie = Movies.objects.all()
