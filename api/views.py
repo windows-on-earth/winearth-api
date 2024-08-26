@@ -22,22 +22,10 @@ def validate_date(date_str):
             f"Date {date_str} is not in the correct format MM/DD/YYYY."
         )
 
-
-def validate_length(length_str):
-    length_regex = r"^\d+$"
-    if not re.match(length_regex, length_str):
-        raise ValidationError(f"length {length_str} is not in the correct format.")
-    
-def validate_limit(limit_str):
-    limit_regex = r"^\d+$"
-    if not re.match(limit_regex, limit_str):
-        raise ValidationError(f"limit {limit_str} is not in the correct format. Please use only non-negative integers.")
-    
-def validate_offset(offset_str):
-    offset_regex = r"^\d+$"
-    if not re.match(offset_regex, offset_str):
-        raise ValidationError(f"offset {offset_str} is not in the correct format. Please use only non-negative integers.")
-
+def validate_integers(str: str, validated_value: str):
+    integer_regex = r"^\d+$"
+    if not re.match(integer_regex, str):
+        raise ValidationError(f"{validated_value} {str} is not in the correct format. Please use only non-negative integers.")
 
 def filter_movies_by_date(movie, start_date, end_date):
 
@@ -73,11 +61,11 @@ def filter_movies_by_date(movie, start_date, end_date):
 def filter_movies_by_length(movie, min, max):
     if min:
         # Validate the length format
-        validate_length(min)
+        validate_integers(min, 'length')
         movie = movie.filter(seconds__gte=min)
     if max:
         # Validate the length format
-        validate_length(max)
+        validate_integers(max, 'length')
         movie = movie.filter(seconds__lte=max)
 
     return movie
@@ -106,10 +94,6 @@ def movie_list(request):
     if request.method == "GET":
         movie = Movies.objects.all()
 
-        # Decode the URL
-        decoded_request = urllib.parse.unquote(request.build_absolute_uri())
-        print(decoded_request)
-
         # Filter the movies by date
         start_date = request.query_params.get("start_date")
         end_date = request.query_params.get("end_date")
@@ -131,11 +115,11 @@ def movie_list(request):
         limit = request.query_params.get("limit")
         if limit:
             limit = urllib.parse.unquote(limit)
-            validate_limit(limit)
+            validate_integers(limit, 'limit')
         offset = request.query_params.get("offset")
         if offset:
             offset = urllib.parse.unquote(offset)
-            validate_offset(offset)
+            validate_integers(offset, 'offset')
 
         paginated_movies = paginator.paginate_queryset(movie, request)
 
