@@ -47,3 +47,13 @@ class Movies(models.Model):
                 self.movie,
             )
         )
+
+    @property
+    def iis_path_512(self):
+        return (
+            "https://windows-on-earth.sdsc.osn.xsede.org/movies/%s/%s_path_512.webp"
+            % (
+                self.movie,
+                self.movie,
+            )
+        )
